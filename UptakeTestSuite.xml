@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Uptake Demo">
     <parameter name="URL" value="https://www.uptake.com/"/>
-    <parameter name="browserType" value="firefox"/>
+    <parameter name="browserType" value="chrome"/>
     <test name="tests">
         <classes>
             <class name="Tests.HomePageTest"/>
