@@ -13,7 +13,7 @@ public class WebDriverSetup {
 
     private WebDriver driver;
 
-    static String driverPath = "C:\\UptakeCodingChallenge\\lib\\chromedriver.exe";
+    static String driverPath = "lib/chromedriver.exe";
 
 
     public WebDriver getDriver() {
