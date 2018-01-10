@@ -26,13 +26,7 @@ public class WebDriverSetup {
 
             driver = launchChrome(URL);
 
-
-        } else if(browserType.equalsIgnoreCase("firefox")){
-
-            driver= launchFirefox(URL);
-
-
-        }
+        } 
     }
 
     private static WebDriver launchChrome(String URL ){
@@ -42,16 +36,6 @@ public class WebDriverSetup {
         System.setProperty("webdriver.chrome.driver", driverPath);
 
         WebDriver driver = new ChromeDriver();
-
-        driver.manage().window().maximize();
-
-        driver.navigate().to(URL);
-
-        return driver;
-    }
-
-    private static WebDriver launchFirefox(String URL){
-        WebDriver driver = new FirefoxDriver();
 
         driver.manage().window().maximize();
 
