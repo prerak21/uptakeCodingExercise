@@ -19,7 +19,7 @@ public class WebDriverSetup {
     private static  WebDriver driver;
 
     //static String driverPath = "lib/chromedriver.exe";
-    static String geckoDriverPath = "lib/geckodriver.exe";
+    //static String geckoDriverPath = "lib/geckodriver.exe";
 
 
     public WebDriver getDriver() {
@@ -43,7 +43,7 @@ public class WebDriverSetup {
 
         System.out.println("Launch Firefox browser");
 
-        System.setProperty("webdriver.gecko.driver", geckoDriverPath);
+        System.setProperty("webdriver.gecko.driver","geckodriver.exe");
         driver = new FirefoxDriver();
         driver.get(URL);
         System.out.println(URL);
