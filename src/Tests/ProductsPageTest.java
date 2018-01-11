@@ -2,7 +2,9 @@ package Tests;
 
 import PageObjects.HomePage;
 import PageObjects.ProductsPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import testSetup.WebDriverSetup;
 
@@ -11,24 +13,29 @@ import testSetup.WebDriverSetup;
  */
 public class ProductsPageTest extends WebDriverSetup{
 
-    HomePage homePage;
-    ProductsPage productsPage;
+    private WebDriver driver;
 
+    private HomePage homePage;
 
-    @Test
-    public void requestADemoTest(){
+    private ProductsPage productsPage;
 
-        productsPage.clickDemoLink();
-        Assert.assertTrue(productsPage.verifyDemoFormDisplay());
+    @BeforeClass
+    public void setUp(){
+
+        driver = getDriver();
     }
 
+
+
     @Test
-    public void navigateToHomePageTest(){
+    public void requestADemoTest() throws Exception{
 
-        productsPage.getHomeButton().click();
+        homePage = new HomePage(driver);
+        productsPage = homePage.clickProducts();
 
-        Assert.assertTrue(homePage.verifyHomePageHeaderTitle());
+        productsPage.clickDemoLink();
 
+        Assert.assertTrue(productsPage.verifyDemoFormDisplay());
     }
 
 
