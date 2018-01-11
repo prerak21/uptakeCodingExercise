@@ -14,9 +14,10 @@ public class HomePageTest  extends WebDriverSetup{
 
     private WebDriver driver;
 
-    private HomePage homePage;
+//    private HomePage homePage;
 
     private ProductsPage productPage;
+
 
     @BeforeClass
     public void setUp(){
@@ -29,9 +30,10 @@ public class HomePageTest  extends WebDriverSetup{
 
         try{
 
-            homePage = new HomePage(driver);
+            HomePage homePage = new HomePage(driver);
             homePage.verifyHomePageHeaderTitle();
-            homePage.clickProducts();
+            productPage = homePage.clickProducts();
+
             productPage.verifyProductsPage();
 
         } catch(Exception e){
