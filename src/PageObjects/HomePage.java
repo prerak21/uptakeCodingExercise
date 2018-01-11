@@ -3,6 +3,7 @@ package PageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import testSetup.WebDriverSetup;
 
 /**
@@ -12,28 +13,34 @@ public class HomePage extends WebDriverSetup {
 
     protected WebDriver driver;
 
-    public HomePage(WebDriver driver) {
+//    public HomePage(WebDriver driver) {
+//
+//        this.driver = driver;
+//    }
 
+    public HomePage(WebDriver driver){
+//        super(driver);
         this.driver = driver;
+        PageFactory.initElements(this.driver,this);
     }
 
     @FindBy(css = "div[class=\"l-site-header__brand\"] title")
-    WebElement homePageTitle;
+    private WebElement homePageTitle;
 
     @FindBy(css="li[class='site-nav__item is-activeproducts'] a[class*='desktop']")
-    WebElement productsLink;
+    private WebElement productsLink;
 
     @FindBy(css="li[class='site-nav__item is-activeindustries'] a[class*='desktop']")
-    WebElement industriesLink;
+    private WebElement industriesLink;
 
     @FindBy(css="li[class='site-nav__item is-activecontact'] a[class*='desktop']")
-    WebElement contactLink;
+    private WebElement contactLink;
 
     @FindBy(css="div[class='l-form-modal']")
-    WebElement contactForm;
+    private WebElement contactForm;
 
-    @FindBy(css="div[class='l-hero-header__content'] h1")
-    WebElement homePageHeaderTitle;
+    @FindBy(css="div[class='l-hero-header__content'] div h1")
+    private WebElement homePageHeaderTitle;
 
 
 
@@ -42,7 +49,9 @@ public class HomePage extends WebDriverSetup {
     public boolean verifyHomePageHeaderTitle(){
 
         System.out.println("Verifying Home Page Header");
-        return homePageHeaderTitle.getText().contains("UPTAKE PRODUCTS");
+
+        String homePageHeader = homePageHeaderTitle.getText();
+        return homePageHeader.contains("UPTAKE PRODUCTS");
     }
 
 
@@ -57,7 +66,6 @@ public class HomePage extends WebDriverSetup {
 
             System.out.println("Products link not found");
         }
-
         return new ProductsPage(driver);
     }
 
